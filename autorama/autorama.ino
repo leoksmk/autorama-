@@ -85,11 +85,11 @@ const char PAGE[] PROGMEM = R"HTML(
   #go:active{transform:translateY(8px);box-shadow:0 2px 0 #16203a,0 6px 14px rgba(0,0,0,.4)}
   .hint{font-size:.9rem;color:#6b7280;margin-top:-8px}
 </style></head><body>
-  <h1>&#127950; Autorama</h1>
+  <h1>&#128640; Autorama</h1>
   <div class="val"><span id="pct">0</span>%</div>
   <div class="bar"><div id="fill" class="fill"></div></div>
-  <button id="go">ACELERAR</button>
-  <div class="hint">aperte varias vezes pra andar</div>
+  <button id="go">IMPULSO</button>
+  <div class="hint">aperte varias vezes pra decolar</div>
 <script>
   const go=document.getElementById('go'),pct=document.getElementById('pct'),
         fill=document.getElementById('fill');
