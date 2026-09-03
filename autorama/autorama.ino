@@ -120,6 +120,9 @@ void handleState() {         sendState(); }
 
 void setup() {
   Serial.begin(115200);
+  delay(400);                       // tempo p/ o USB-CDC enumerar
+  Serial.println();
+  Serial.println("=== BOOT Autorama ===");   // se isso repetir = reset em loop
 
   ledcAttach(MOTOR_PIN, PWM_FREQ, PWM_RES);   // core 3.x
   ledcWrite(MOTOR_PIN, 0);
@@ -133,7 +136,11 @@ void setup() {
   Serial.print("IP: http://"); Serial.println(WiFi.localIP());
 #else
   WiFi.mode(WIFI_AP);
-  WiFi.softAP(AP_SSID, AP_PASS);
+  delay(100);
+  // canal 1, nao oculto, ate 4 clientes
+  bool ok = WiFi.softAP(AP_SSID, AP_PASS, 1, 0, 4);
+  delay(200);
+  Serial.print("softAP: "); Serial.println(ok ? "OK" : "FALHOU");
   Serial.print("AP \""); Serial.print(AP_SSID);
   Serial.print("\"  ->  http://"); Serial.println(WiFi.softAPIP());
 #endif
